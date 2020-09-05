@@ -1,26 +1,39 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { Component } from 'react';
+import Home from './components/Home'
+import Comments from './components/Comments'
+import Fetch from './components/Fetch'
+import Posts from './components/Posts'
+import { Link, Switch, Route, BrowserRouter } from 'react-router-dom'
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+class App extends Component {
+  render() {
+    return (
+      <BrowserRouter>
+        <div className="App">
+          <Link to="/">Home  </Link>
+          <Link to="/comments">Comments  </Link>
+          <Link to="/posts">Posts  </Link>
+          <Link to="/fetch">Fetch  </Link>
+
+
+          <Switch>
+            <Route path="/comments">
+              <Comments />
+            </Route>
+            <Route path="/posts">
+              <Posts />
+            </Route>
+            <Route path="/fetch">
+              <Fetch />
+            </Route>
+            <Route path="/">
+              <Home />
+            </Route>
+          </Switch>
+        </div>
+      </BrowserRouter>
+    )
+  }
 }
 
 export default App;
